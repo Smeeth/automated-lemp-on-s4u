@@ -12,4 +12,5 @@ Just copy, paste and execute the following
 
 	cd /tmp
 	wget https://github.com/Smeeth/automated-lemp-on-s4u/raw/master/install.sh
+	chmod +x install.sh
 	./install.sh
