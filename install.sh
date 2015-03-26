@@ -41,7 +41,7 @@ if [ $(id -u) != "0" ]; then
 	# Install NTP
 	apt-get -y install ntp ntpdate
 
-	#Install NginX, PHP5, phpMyAdmin, FCGI, suExec, Pear, And mcrypt
+	# Install NginX, PHP5, phpMyAdmin, FCGI, suExec, Pear, And mcrypt
 	echo 'phpmyadmin      phpmyadmin/reconfigure-webserver        multiselect' | debconf-set-selections
 	echo 'phpmyadmin      phpmyadmin/dbconfig-install     boolean false' | debconf-set-selections
 
@@ -51,13 +51,21 @@ if [ $(id -u) != "0" ]; then
 
 	apt-get -y install php5-fpm php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
 	
-	#PHP Configuration Stuff Goes Here
+	# do PHP Config
 	service php5-fpm restart
 	
 	apt-get -y install fcgiwrap
 	apt-get -y install phpmyadmin
 
 	service php5-fpm restart
+	service nginx restart
+	
+	# some SSL-advices
+	openssl dhparam -dsaparam -out /etc/ssl/certs/dhparam.pem 4096	# You can remove "-dsaparam" from that command, but that will last hours
+	wget https://github.com/Smeeth/automated-lemp-on-s4u/raw/master/config-templates/nginx.conf
+	cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+	cp /tmp/nginx.conf /etc/nginx/nginx.conf
+	
 	service nginx restart
 
 fi
