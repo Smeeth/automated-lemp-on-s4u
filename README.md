@@ -1,4 +1,7 @@
 ## automated-lemp-on-s4u
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/29cb3d491a9e4fa3b6a252d32743079d)](https://www.codacy.com/app/Smeeth/automated-lemp-on-s4u?utm_source=github.com&utm_medium=referral&utm_content=Smeeth/automated-lemp-on-s4u&utm_campaign=badger)
+
 My first try to get an automated installation for a LEMP-Stack on a dedicated server provided by server4you.de
 
 This script will install fully automated the following packages preconfigured on your fresh Ubuntu 14.04 LTS installation on your dedicated server:
